@@ -1,8 +1,11 @@
 import pandas as pd
 import json 
 import streamlit as st 
+from time import sleep
+from stqdm import stqdm
 
-
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
 
 st.set_page_config(
     page_title="More Films",
@@ -22,8 +25,9 @@ user_input = st.text_input("Me fale um filme... (Em inglês!!) ")
 if user_input == ' ':
   st.write("Ué... Você ainda não me falou nenhum filme!")
 
-
-
+df = pd.read_csv('tmdb_5000_movies.csv')
+x = df.iloc[0]
+j = json.loads(x['genres'])
 
 def genres_and_keywords_to_string(row): 
   genres = json.loads(row['genres'])
@@ -58,4 +62,6 @@ def recommend(user_input):
   return recommended_movies_text
 
 if user_input:
+    for _ in stqdm(range(user_input2), desc="Estou procurandos os melhores filmes para você... ", mininterval=1):
+        sleep(0.5)
     st.write(recommend(user_input))
