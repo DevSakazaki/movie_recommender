@@ -1,8 +1,6 @@
 import pandas as pd
 import json 
 import streamlit as st 
-from time import sleep
-from stqdm import stqdm
 
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
@@ -62,6 +60,4 @@ def recommend(user_input):
   return recommended_movies_text
 
 if user_input:
-    for _ in stqdm(range(user_input2), desc="Estou procurandos os melhores filmes para você... ", mininterval=1):
-        sleep(0.5)
     st.write(recommend(user_input))
