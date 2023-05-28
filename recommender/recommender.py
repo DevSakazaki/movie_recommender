@@ -23,8 +23,7 @@ if user_input == ' ':
   st.write("Ué... Você ainda não me falou nenhum filme!")
 
 
-x = df.iloc[0]
-j = json.loads(x['genres'])
+
 
 def genres_and_keywords_to_string(row): 
   genres = json.loads(row['genres'])
