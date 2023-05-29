@@ -1,7 +1,8 @@
 import pandas as pd
 import json 
 import streamlit as st 
-
+import sklearn.feature_extraction.text.TfidfVectorizer 
+import sklearn.metrics.pairwise.cosine_similarity
 
 st.set_page_config(
     page_title="More Films",
