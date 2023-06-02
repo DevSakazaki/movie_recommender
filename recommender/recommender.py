@@ -1,4 +1,10 @@
+import pandas as pd
+import json 
 import streamlit as st 
+
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
+
 st.set_page_config(
     page_title="More Films",
     page_icon="🎥",
@@ -16,14 +22,6 @@ user_input2 = st.slider('Quantos filmes você deseja?', 2, 20)
 user_input = st.text_input("Me fale um filme... (Em inglês!!) ")
 if user_input == ' ':
   st.write("Ué... Você ainda não me falou nenhum filme!")
-
-import pandas as pd
-import json 
-
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.metrics.pairwise import cosine_similarity
-
-
 
 df = pd.read_csv('tmdb_5000_movies.csv')
 x = df.iloc[0]
