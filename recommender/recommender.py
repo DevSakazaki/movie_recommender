@@ -12,7 +12,7 @@ st.set_page_config(
     initial_sidebar_state="expanded",
     menu_items={
         'Report a bug': "https://github.com/DevSakazaki",
-        'About': 'App de recomendação de filmes feito por SergioJr, use nome de filmes em inglês, filmes mais recentes não serão reconhecidos. Acesse meu Portfólio: https://portfolio-jet-chi-78.vercel.app/index.html'
+        'About': 'App de recomendação de filmes feito por SergioJr, use nome de filmes em inglês, filmes mais recentes não serão reconhecidos. Nossa base de dados atualmente se limita somente a apenas 5000 filmes, porém aumentaremos em breves atualizações, fique atento! Acesse meu Portfólio: https://portfolio-jet-chi-78.vercel.app/index.html'
     }
 )
 
