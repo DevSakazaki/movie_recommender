@@ -13,7 +13,7 @@ st.set_page_config(
     menu_items={
         'Get Help': 'https://www.extremelycoolapp.com/help',
         'Report a bug': "https://www.extremelycoolapp.com/bug",
-        'About': "# App feito por Sakazaki"
+        'About': "# App feito por SergioJr"
     }
 )
 
@@ -52,7 +52,7 @@ def recommend(user_input):
 
   recommended_idx = (-scores).argsort()[1:user_input2]
 
-  st.subheader("Recomendações para o filme " + user_input)
+  st.subheader("Recomendações para o filme " + user_input + ", espero que goste!")
 
   recommended_movies = df['title'].iloc[recommended_idx].tolist()
   recommended_movies_text = '\n'.join([movie + '\n' for movie in recommended_movies])
