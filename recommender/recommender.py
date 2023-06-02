@@ -21,6 +21,8 @@ quantidade = st.slider('Quantos filmes você deseja?', 2, 20)
 user_input = st.text_input("Me fale um filme... (Em inglês!!) ")
 if user_input == ' ':
   st.write("Ué... Você ainda não me falou nenhum filme!")
+elif user_input.islower():
+   st.write("Ao inciar cada palavra do nome do filme, use letras maiúsculas, por favor.")
 
 df = pd.read_csv('recommender/data/tmdb_5000_movies.csv')
 x = df.iloc[0]
