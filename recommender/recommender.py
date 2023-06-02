@@ -23,7 +23,7 @@ user_input = st.text_input("Me fale um filme... (Em inglês!!) ")
 if user_input == ' ':
   st.write("Ué... Você ainda não me falou nenhum filme!")
 
-df = pd.read_csv('data/tmdb_5000_movies.csv')
+df = pd.read_csv('recommender/data/tmdb_5000_movies.csv')
 x = df.iloc[0]
 j = json.loads(x['genres'])
 
