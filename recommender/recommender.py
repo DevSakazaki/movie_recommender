@@ -45,7 +45,7 @@ movie2idx = pd.Series(df.index, index=df['title'])
 def recommend(user_input): 
   if not df['title'].str.contains(user_input).any():
         st.subheader('Ainda não conheço o filme ' + user_input + ', desculpe :(')
-        st.write('Que tal tentar um filme um pouco mais conhecido?')
+        st.write('Que tal tentar outro filme? Talvez com um mais conhecido funcione!')
         return None
   
   idx = movie2idx[user_input]
