@@ -11,21 +11,22 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="expanded",
     menu_items={
-        'Get Help': 'https://www.extremelycoolapp.com/help',
-        'Report a bug': "https://www.extremelycoolapp.com/bug",
-        'About': "# App feito por SergioJr"
+        'Report a bug': "https://github.com/DevSakazaki",
+        'About': 'App de recomendação de filmes feito por SergioJr, use nome de filmes em inglês, filmes mais recentes não serão reconhecidos. Acesse meu Portfólio: https://portfolio-jet-chi-78.vercel.app/index.html'
     }
 )
 
 st.title("Descubra novos filmes!")
-user_input2 = st.slider('Quantos filmes você deseja?', 2, 20)
+quantidade = st.slider('Quantos filmes você deseja?', 2, 20)
 user_input = st.text_input("Me fale um filme... (Em inglês!!) ")
 if user_input == ' ':
   st.write("Ué... Você ainda não me falou nenhum filme!")
 
-df = pd.read_csv('recommender/data/tmdb_5000_movies.csv')
+df = pd.read_csv('data/tmdb_5000_movies.csv')
 x = df.iloc[0]
 j = json.loads(x['genres'])
+
+
 
 def genres_and_keywords_to_string(row): 
   genres = json.loads(row['genres'])
@@ -42,6 +43,11 @@ X = tfidf.fit_transform(df['string'])
 movie2idx = pd.Series(df.index, index=df['title'])
 
 def recommend(user_input): 
+  if not df['title'].str.contains(user_input).any():
+        st.subheader('Ainda não conheço o filme ' + user_input + ', desculpe :(')
+        st.write('Que tal tentar um filme um pouco mais conhecido?')
+        return None
+  
   idx = movie2idx[user_input]
   if type(idx) == pd.Series:
     idx = idx.iloc[0]
@@ -50,7 +56,7 @@ def recommend(user_input):
   scores = cosine_similarity(query, X)
   scores = scores.flatten()
 
-  recommended_idx = (-scores).argsort()[1:user_input2]
+  recommended_idx = (-scores).argsort()[1:quantidade]
 
   st.subheader("Recomendações para o filme " + user_input + ", espero que goste!")
 
